@@ -26,6 +26,7 @@ FormNapper.prototype.inject = function (name, value) {
     input = this.htmlForm[name];
   } else {
     input = document.createElement('input');
+    input.type = 'hidden';
     this.htmlForm.appendChild(input);
   }
 

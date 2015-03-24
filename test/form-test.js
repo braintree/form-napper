@@ -73,6 +73,7 @@ describe('Form', function () {
       this.form.inject('foo', 'bar');
       var input = document.querySelector('input[name="foo"]');
       expect(input).to.exist;
+      expect(input.type).to.equal('hidden');
     });
   });
 
