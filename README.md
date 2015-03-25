@@ -23,7 +23,7 @@ form.hijack(function (event) {
   console.log('This form\'s submit has been hijacked.');
 });
 
-form.inject('ransomeNote', 'Send ransom to...');
+form.inject('ransomNote', 'Send ransom to...');
 
 form.submit();
 ```
