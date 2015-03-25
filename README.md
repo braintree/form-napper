@@ -17,7 +17,7 @@ npm i
 ## API
 
 ```javascript
-var form = FormNapper('my-form-id');
+var form = new FormNapper('my-form-id');
 
 form.hijack(function (event) {
   console.log('This form\'s submit has been hijacked.');
