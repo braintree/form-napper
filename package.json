@@ -1,6 +1,6 @@
 {
   "name": "form-napper",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Hijack and submit forms",
   "main": "index.js",
   "scripts": {
