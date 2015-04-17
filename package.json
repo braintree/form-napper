@@ -1,0 +1,27 @@
+{
+  "name": "form-napper",
+  "version": "1.0.0",
+  "description": "Hijack and submit forms",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp lint && ./node_modules/karma/bin/karma start config/karma.js --single-run"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^6.1.0",
+    "chai": "^2.1.2",
+    "gulp": "^3.8.11",
+    "gulp-eslint": "^0.5.0",
+    "karma": "^0.12.31",
+    "karma-browserify": "^4.0.0",
+    "karma-chai-sinon": "^0.1.4",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^2.2.1",
+    "phantomjs": "^1.9.16",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0",
+    "vinyl-source-stream": "^1.0.0"
+  }
+}

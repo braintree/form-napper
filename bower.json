@@ -1,0 +1,24 @@
+{
+  "name": "form-napper",
+  "main": "index.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/braintree/form-napper",
+  "authors": [
+    "braintree <code@getbraintree.com>"
+  ],
+  "description": "Hijack, submit, and inject data into forms.",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "form"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

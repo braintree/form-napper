@@ -1,0 +1,29 @@
+Form-napper
+===========
+
+Hijack, submit, and inject data into forms
+
+### Installation
+
+```
+nvm use
+
+# If node version is not installed
+nvm install
+
+npm i
+```
+
+## API
+
+```javascript
+var form = new FormNapper('my-form-id');
+
+form.hijack(function (event) {
+  console.log('This form\'s submit has been hijacked.');
+});
+
+form.inject('ransomNote', 'Send ransom to...');
+
+form.submit();
+```
