@@ -39,7 +39,7 @@ The `FormNapper` constructor accepts a single argument:
 
 | Argument | Type | Description |
 | -------- | ---- | ----------- |
-| `selector` | `String` | A reference to the `id` of your `form` element |
+| `id` | `String` | A reference to the `id` of your `form` element |
 
 - - -
 
