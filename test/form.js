@@ -80,8 +80,12 @@ describe('Form', function () {
   describe('submit', function () {
     it('calls the original form submit', function () {
       var stub = this.sandbox.stub(this.form.htmlForm, 'submit');
+      var prototypeStub = this.sandbox.stub(HTMLFormElement.prototype.submit, 'call');
+
       this.form.submit();
-      expect(stub).to.have.been.called;
+
+      expect(stub).not.to.have.been.called;
+      expect(prototypeStub).to.have.been.called;
     });
   });
 });

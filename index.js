@@ -38,15 +38,7 @@ FormNapper.prototype.inject = function (name, value) {
 };
 
 FormNapper.prototype.submit = function () {
-  var form = this.htmlForm;
-
-  if (form.submit && (typeof form.submit === 'function' || form.submit.call)) {
-    form.submit();
-  } else {
-    setTimeout(function () {
-      form.querySelector('[type="submit"]').click();
-    }, 1);
-  }
+  HTMLFormElement.prototype.submit.call(this.htmlForm);
 };
 
 module.exports = FormNapper;
