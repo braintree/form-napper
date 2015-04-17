@@ -6,7 +6,11 @@
   "scripts": {
     "test": "gulp lint && ./node_modules/karma/bin/karma start config/karma.js --single-run"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:braintree/form-napper"
+  },
+  "author": "braintree <code@getbraintree.com>",
   "license": "MIT",
   "devDependencies": {
     "browserify": "^6.1.0",
