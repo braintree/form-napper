@@ -65,3 +65,14 @@ If an input with the provided name is found, its value will be updated with the 
 #### `submit()`
 
 Calling `submit` will forcefully submit your `form` and bypass any attached event handlers.
+
+## Development
+
+We use `nvm` for managing our node versions, but you do not have to. Replace any `nvm` references with the tool of your choice below.
+
+```sh
+nvm install
+npm install
+```
+
+All testing dependencies will be installed upon `npm install`. Run the test suite with `npm test`.
