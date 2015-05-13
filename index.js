@@ -16,7 +16,7 @@ FormNapper.prototype.hijack = function (onsubmit) {
   }
 
   if (global.addEventListener != null) {
-    this.htmlForm.addEventListener('submit', handler);
+    this.htmlForm.addEventListener('submit', handler, false);
   } else if (global.attachEvent != null) {
     this.htmlForm.attachEvent('onsubmit', handler);
   } else {
