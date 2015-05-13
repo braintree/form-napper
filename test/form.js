@@ -22,6 +22,35 @@ describe('Form', function () {
     it('assigns this.htmlForm to the form with the supplied id', function () {
       expect(this.form.htmlForm).to.equal(this.htmlForm);
     });
+
+    it('assigns this.htmlForm if passed an HTMLFormElement', function () {
+      var form = document.createElement('form');
+      var napped = new Form(form);
+      expect(napped.htmlForm).to.equal(form);
+    });
+
+    it('throws errors when passed non-form elements', function () {
+      var div = document.createElement('div');
+      expect(function () {
+        new Form(div);
+      }).to.throw(TypeError);
+    });
+
+    it('throws errors when passed a non-form ID', function () {
+      var div = document.createElement('div');
+      div.id = 'yas';
+      document.body.appendChild(div);
+
+      expect(function () {
+        new Form(div);
+      }).to.throw(TypeError);
+    });
+
+    it('throws errors when passed a non-existent ID', function () {
+      expect(function () {
+        new Form('oh-yeah-its-the-form-napper');
+      }).to.throw(TypeError);
+    });
   });
 
   describe('hijack', function () {

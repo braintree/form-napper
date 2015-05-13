@@ -1,7 +1,15 @@
 'use strict';
 
-function FormNapper(formId) {
-  this.htmlForm = document.getElementById(formId);
+function FormNapper(form) {
+  if (typeof form === 'string' || form instanceof String) {
+    form = document.getElementById(form);
+  }
+
+  if (form instanceof HTMLFormElement) {
+    this.htmlForm = form;
+  } else {
+    throw new TypeError('FormNapper requires an HTMLFormElement element or the id string of one.');
+  }
 }
 
 FormNapper.prototype.hijack = function (onsubmit) {

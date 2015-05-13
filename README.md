@@ -33,13 +33,14 @@ form.submit();
 
 ## API
 
-#### `FormNapper(id: String): FormNapper`
+#### `FormNapper(String|Element): FormNapper`
 
-The `FormNapper` constructor accepts a single argument:
+The `FormNapper` constructor accepts a single argument as an id string or a DOM element.
 
 | Argument | Type | Description |
 | -------- | ---- | ----------- |
 | `id` | `String` | A reference to the `id` of your `form` element |
+| `element` | `HTMLFormElement` | A reference to the `form` element itself |
 
 - - -
 
