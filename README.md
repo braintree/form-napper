@@ -11,10 +11,10 @@ Form Napper provides the ability to interrupt a submit flow and perform an async
 <form id="my-form">
   <label for="card-number">Card Number</label>
   <input type="text" name="card-number" />
-  
+
   <label for="cvv">CVV</label>
   <input type="text" name="cvv" />
-  
+
   <input type="submit" />
 </form>
 ```
@@ -33,7 +33,7 @@ form.submit();
 
 ## API
 
-#### `FormNapper(selector: String): FormNapper` 
+#### `FormNapper(id: String): FormNapper`
 
 The `FormNapper` constructor accepts a single argument:
 
