@@ -18,6 +18,10 @@ describe('Form', function () {
     this.form = new Form('fakeform');
   });
 
+  afterEach(function () {
+    this.sandbox.restore();
+  });
+
   describe('constructor', function () {
     it('assigns this.htmlForm to the form with the supplied id', function () {
       expect(this.form.htmlForm).to.equal(this.htmlForm);
@@ -83,6 +87,16 @@ describe('Form', function () {
 
       expect(spy).to.have.been.called;
     });
+
+    it('noops when calling thing a second time', function () {
+      this.form.hijack(function () {});
+
+      this.sandbox.spy(this.form.htmlForm, 'addEventListener');
+
+      this.form.hijack(function () {});
+
+      expect(this.form.htmlForm.addEventListener).not.to.have.been.called;
+    });
   });
 
   describe('inject', function () {
@@ -104,6 +118,21 @@ describe('Form', function () {
       expect(input).to.exist;
       expect(input.type).to.equal('hidden');
     });
+
+    it('returns the existing input element', function () {
+      var existingInput = document.createElement('input');
+      existingInput.name = 'foo';
+      this.htmlForm.appendChild(existingInput);
+
+      expect(this.form.inject('foo', 'baz')).to.equal(existingInput);
+    });
+
+    it('returns a newly-added input', function () {
+      var result = this.form.inject('foo', 'bar');
+      var newInput = document.querySelector('input[name="foo"]');
+
+      expect(result).to.equal(newInput);
+    });
   });
 
   describe('submit', function () {
@@ -115,6 +144,25 @@ describe('Form', function () {
 
       expect(stub).not.to.have.been.called;
       expect(prototypeStub).to.have.been.called;
+    });
+  });
+
+  describe('detach', function () {
+    it('calls removeEventListener', function () {
+      this.sandbox.spy(this.form.htmlForm, 'removeEventListener');
+
+      this.form.submitHandler = 'fakeHandler';
+      this.form.detach();
+
+      expect(this.form.htmlForm.removeEventListener).to.have.been.called;
+      expect(this.form.htmlForm.removeEventListener).to.be.calledWith('submit', 'fakeHandler', false);
+    });
+
+    it('deletes the submitHandler', function () {
+      this.form.submitHandler = 'fakeHandler';
+      this.form.detach();
+
+      expect(this.form.submitHandler).to.equal(undefined);
     });
   });
 });

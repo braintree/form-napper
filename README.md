@@ -50,11 +50,13 @@ The `hijack` method accepts a callback function that will provide an `event` obj
 
 - - -
 
-#### `inject(name: String, value: String)`
+#### `inject(name: String, value: String): HTMLInputElement`
 
 The `inject` method will inject a hidden `input` element into your `form` and accepts two arguments representing the `name` and `value` of that input.
 
 If an input with the provided name is found, its value will be updated with the new value passed to `inject`.
+
+Whether Form Napper creates the input inside of `inject` or a previous element existed, that reference will be returned from `inject`.
 
 | Argument | Type | Description |
 | -------- | ---- | ----------- |
@@ -66,6 +68,12 @@ If an input with the provided name is found, its value will be updated with the 
 #### `submit()`
 
 Calling `submit` will forcefully submit your `form` and bypass any attached event handlers.
+
+- - -
+
+#### `detach()`
+
+The `detach` method removes the event listener added in `hijack`.
 
 ## Development
 

@@ -13,7 +13,9 @@ function FormNapper(form) {
 }
 
 FormNapper.prototype.hijack = function (onsubmit) {
-  function handler(event) {
+  if (this.submitHandler) { return; }
+
+  this.submitHandler = function (event) {
     if (event.preventDefault) {
       event.preventDefault();
     } else {
@@ -21,14 +23,14 @@ FormNapper.prototype.hijack = function (onsubmit) {
     }
 
     onsubmit(event);
-  }
+  };
 
   if (global.addEventListener != null) {
-    this.htmlForm.addEventListener('submit', handler, false);
+    this.htmlForm.addEventListener('submit', this.submitHandler, false);
   } else if (global.attachEvent != null) {
-    this.htmlForm.attachEvent('onsubmit', handler);
+    this.htmlForm.attachEvent('onsubmit', this.submitHandler);
   } else {
-    this.htmlForm.onsubmit = handler;
+    this.htmlForm.onsubmit = this.submitHandler;
   }
 };
 
@@ -43,10 +45,26 @@ FormNapper.prototype.inject = function (name, value) {
   }
 
   input.value = value;
+
+  return input;
 };
 
 FormNapper.prototype.submit = function () {
   HTMLFormElement.prototype.submit.call(this.htmlForm);
+};
+
+FormNapper.prototype.detach = function () {
+  if (!this.submitHandler) { return; }
+
+  if (global.removeEventListener != null) {
+    this.htmlForm.removeEventListener('submit', this.submitHandler, false);
+  } else if (global.detachEvent != null) {
+    this.htmlForm.detachEvent('onsubmit', this.submitHandler);
+  } else {
+    this.htmlForm.onsubmit = null;
+  }
+
+  delete this.submitHandler;
 };
 
 module.exports = FormNapper;
