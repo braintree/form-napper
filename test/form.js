@@ -1,9 +1,14 @@
 'use strict';
+/* eslint-disable no-new */
+
 var Form = require('../index');
 
 function triggerEvent(name, target) {
+  var event;
+
   target = target || global;
-  var event = document.createEvent('Event');
+  event = document.createEvent('Event');
+
   event.preventDefault = sinon.spy();
   event.initEvent(name, true, true);
   target.dispatchEvent(event);
@@ -30,11 +35,13 @@ describe('Form', function () {
     it('assigns this.htmlForm if passed an HTMLFormElement', function () {
       var form = document.createElement('form');
       var napped = new Form(form);
+
       expect(napped.htmlForm).to.equal(form);
     });
 
     it('throws errors when passed non-form elements', function () {
       var div = document.createElement('div');
+
       expect(function () {
         new Form(div);
       }).to.throw(TypeError);
@@ -42,6 +49,7 @@ describe('Form', function () {
 
     it('throws errors when passed a non-form ID', function () {
       var div = document.createElement('div');
+
       div.id = 'yas';
       document.body.appendChild(div);
 
@@ -60,6 +68,7 @@ describe('Form', function () {
   describe('hijack', function () {
     it('assigns a handler to the form', function () {
       var spy = this.sandbox.spy();
+
       this.sandbox.spy(this.form.htmlForm, 'addEventListener');
 
       this.form.hijack(spy);
@@ -69,17 +78,20 @@ describe('Form', function () {
     });
 
     it('prevents default on the submit event', function () {
+      var event;
       var spy = this.sandbox.spy();
+
       this.sandbox.spy(this.form.htmlForm, 'addEventListener');
 
       this.form.hijack(spy);
-      var event = triggerEvent('submit', this.form.htmlForm);
+      event = triggerEvent('submit', this.form.htmlForm);
 
       expect(event.preventDefault).to.have.been.called;
     });
 
     it('calls handler on form submit', function () {
       var spy = this.sandbox.spy();
+
       this.sandbox.spy(this.form.htmlForm, 'addEventListener');
 
       this.form.hijack(spy);
@@ -101,26 +113,32 @@ describe('Form', function () {
 
   describe('inject', function () {
     it('modifies existing input values', function () {
+      var actualInput;
       var expectedInput = document.createElement('input');
+
       expectedInput.name = 'foo';
       expectedInput.value = 'bar';
       this.htmlForm.appendChild(expectedInput);
 
       this.form.inject('foo', 'baz');
-      var actualInput = document.querySelector('input[name="foo"]');
+      actualInput = document.querySelector('input[name="foo"]');
 
       expect(actualInput.value).to.equal('baz');
     });
 
     it('appends hidden input for nonexistent input name', function () {
+      var input;
+
       this.form.inject('foo', 'bar');
-      var input = document.querySelector('input[name="foo"]');
+      input = document.querySelector('input[name="foo"]');
+
       expect(input).to.exist;
       expect(input.type).to.equal('hidden');
     });
 
     it('returns the existing input element', function () {
       var existingInput = document.createElement('input');
+
       existingInput.name = 'foo';
       this.htmlForm.appendChild(existingInput);
 
@@ -162,7 +180,7 @@ describe('Form', function () {
       this.form.submitHandler = 'fakeHandler';
       this.form.detach();
 
-      expect(this.form.submitHandler).to.equal(undefined);
+      expect(this.form.submitHandler).to.equal(undefined); // eslint-disable-line no-undefined
     });
   });
 });
