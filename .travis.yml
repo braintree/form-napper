@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-  - "0.10"
+- '4'
 notifications:
-  email:
-    - external-ci-notifications+form-napper@getbraintree.com
+  email: false
+  slack:
+    on_success: change
+    on_failure: always
+    secure: G20KsPG5rrU5M0v3DN6NEPmXnw0h5xP0oUgfNfvMihxVTNPjLg+VP72dhuH2KDPn8/EropG6Vh3+Xtbkan2MwZ8Psc9hGNxfvmQzzD+9D2+gENGUzOqH0RpvvXam0ksKEfstGsJZS0SXPGFO+xAQbvxOUAUSWpw14Bb0DfTPXRc=
