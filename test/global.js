@@ -1,7 +1,7 @@
 'use strict';
 
 beforeEach(function () {
-  this.sandbox = sinon.sandbox.create();
+  this.sandbox = sinon.createSandbox();
   document.body.innerHTML = '';
 });
 
