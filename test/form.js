@@ -12,6 +12,7 @@ function triggerEvent(name, target) {
   event.preventDefault = sinon.spy();
   event.initEvent(name, true, true);
   target.dispatchEvent(event);
+
   return event;
 }
 
