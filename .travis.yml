@@ -4,4 +4,6 @@ notifications:
   slack:
     on_success: change
     on_failure: always
-    secure: G20KsPG5rrU5M0v3DN6NEPmXnw0h5xP0oUgfNfvMihxVTNPjLg+VP72dhuH2KDPn8/EropG6Vh3+Xtbkan2MwZ8Psc9hGNxfvmQzzD+9D2+gENGUzOqH0RpvvXam0ksKEfstGsJZS0SXPGFO+xAQbvxOUAUSWpw14Bb0DfTPXRc=
+    on_pull_requests: false
+    rooms:
+      - secure: aByfbN5lFbCl+mSwFL1nIz2i8HhSGLpMIIcP2A6cOESC00nz/aLvNi0mjr33HKCuHGslN4lsljs/tqOAmJit+LBdC4eOKAmvImaQXa00aZLM7xf1UfpzfaqGDlIa3g79DnBesaU+KrQalhhXj5HhfcImKhhS8CbqJB2ckOungLA=
