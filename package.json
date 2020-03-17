@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint && karma start config/karma.js --single-run"
+    "posttest": "npm run lint",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,19 +16,8 @@
   "author": "braintree <code@getbraintree.com>",
   "license": "MIT",
   "devDependencies": {
-    "browserify": "^16.5.0",
-    "chai": "^4.2.0",
-    "eslint": "^6.2.2",
+    "eslint": "^6.8.0",
     "eslint-config-braintree": "^4.0.0",
-    "karma": "^4.3.0",
-    "karma-browserify": "^6.1.0",
-    "karma-chai-sinon": "^0.1.4",
-    "karma-mocha": "^1.2.0",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "mocha": "^6.2.0",
-    "phantomjs-prebuilt": "^2.1.16",
-    "sinon": "^7.4.1",
-    "sinon-chai": "^3.3.0",
-    "vinyl-source-stream": "^2.0.0"
+    "jest": "^25.1.0"
   }
 }
