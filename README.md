@@ -1,4 +1,4 @@
-Form-napper [![Build Status](https://travis-ci.org/braintree/form-napper.svg)](https://travis-ci.org/braintree/form-napper) [![npm version](https://badge.fury.io/js/form-napper.svg)](http://badge.fury.io/js/form-napper)
+Form-napper [![npm version](https://badge.fury.io/js/form-napper.svg)](http://badge.fury.io/js/form-napper)
 ===========
 
 Hijack a `form` submit, inject data, resume.
