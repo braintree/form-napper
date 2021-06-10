@@ -16,9 +16,9 @@
   "author": "braintree <code@getbraintree.com>",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "eslint-config-braintree": "^4.0.0",
-    "jest": "^27.0.3"
+    "jest": "^27.0.4"
   },
   "jest": {
     "testEnvironment": "jsdom"
